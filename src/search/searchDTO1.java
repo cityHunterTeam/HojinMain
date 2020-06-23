@@ -4,6 +4,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import javax.servlet.http.HttpServlet;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -15,9 +16,8 @@ import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class searchDTO {
+public class searchDTO1{
     public static void main(String[] args) throws IOException {
-    	Node arrplacename = null;
         StringBuilder urlBuilder = new StringBuilder("http://openapi.tago.go.kr/openapi/service/TrainInfoService/getStrtpntAlocFndTrainInfo"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=sOy5hEZhdouT3bt0KCjqLrVKs9CplOTB%2F8ZV%2BTxKxftTiPvsPtd1IiIAxjy66VtyIiQRk7r5AP0SNnW7J5yArw%3D%3D" + 
         		"" + 
@@ -42,7 +42,6 @@ public class searchDTO {
         StringBuilder sb = new StringBuilder();
         String line;
         while ((line = rd.readLine()) != null) {
-//        	System.out.println(line);
             sb.append(line);
         }
         rd.close();
@@ -50,6 +49,8 @@ public class searchDTO {
       System.out.println(sb.toString());
         
         try {
+        	Node arrplacename = null;
+        	Node depplacename = null;
         	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         	DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         	
@@ -65,9 +66,12 @@ public class searchDTO {
         	Element item = (Element) items.getElementsByTagName("item").item(0);
         	
         	arrplacename = item.getElementsByTagName("arrplacename").item(0);
-        	
+        	depplacename = item.getElementsByTagName("depplacename").item(0);
         	System.out.println(arrplacename.getNodeName());
         	System.out.println(arrplacename.getChildNodes().item(0).getNodeValue());
+        	
+        	System.out.println(depplacename.getNodeName());
+        	System.out.println(depplacename.getChildNodes().item(0).getNodeValue());
         }catch (Exception e) {
         	e.printStackTrace();
         }

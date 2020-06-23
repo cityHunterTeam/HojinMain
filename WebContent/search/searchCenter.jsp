@@ -35,6 +35,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+		<jsp:include page="../member/header.jsp"></jsp:include>
 		<div class="container pb-5">
 			<form autocomplete="off" onkeydown="return captureReturnKey(event)" onsubmit="return false;" action="searchpro.jin" method="post" name="search">
 				<div class="container mt-5 ">
@@ -93,7 +94,7 @@
 				</div>
 			</form>
 			</div>
-			
+			<jsp:include page="../member/footer.jsp"></jsp:include>
 			<!-- jquery plugins here-->
     <script src="js/jquery-1.12.1.min.js"></script>
     <!-- popper js -->
