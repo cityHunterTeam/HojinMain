@@ -19,7 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.XML;
 
-@WebServlet("/search")
+@WebServlet("/sea/*")
 public class searchController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -76,7 +76,6 @@ public class searchController extends HttpServlet {
 			}
 	        	rd.close();
 	        	conn.disconnect();
-	        	nextPage = "/member/deleteMem.jsp";
 
 			}
 			
