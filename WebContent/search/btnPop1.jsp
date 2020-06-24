@@ -4,6 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta http-equiv="Content-Script-Type" content="text/javascript">
@@ -39,13 +42,13 @@
 <body class="popup">
 	<div class="popup_ly" style="width:92%">
 		<div class="header">
-			<h1>역명조회</h1>
+			<h2>역명조회</h2>
 			<a href="#" onclick="window.close();" class="pop_close" title="팝업 닫기">닫기</a>
 		</div>
 		<div class="cont">
 			<!-- popup content -->
 			<h2 class="tit_pop">주요역</h2>
-			<table class="tbl_b_no" summary="출발역을 선택 하세요.">
+			<table class="table table-sm" summary="출발역을 선택 하세요." style="width: 30%">
 				<caption>역명조회</caption>
 				<colgroup>
 					<col width="20%">
@@ -84,7 +87,7 @@
 							<td class="bg03"><a href="javascript:putStation('구포'    ,'0019')" title="KTX 정차역">구포    </a></td>
 						</tr>
 						<tr>
-							<td class="bg03"><a href="javascript:putStation('부산'    ,'0020')" title="KTX 정차역">부산    </a></td>
+							<td class="bg03"><a href="javascript:putStation('부산'    ,'NAT014445')" title="KTX 정차역">부산    </a></td>
 							<td class="bg03"><a href="javascript:putStation('신경주'  ,'0508')" title="KTX 정차역">신경주  </a></td>
 							<td class=""><a href="javascript:putStation('태화강'  ,'0125')">태화강  </a></td>
 							<td class="bg03"><a href="javascript:putStation('울산(통도사)' ,'0509')" title="KTX 정차역">울산(통도사)</a></td>
@@ -130,7 +133,8 @@
 		</div>
 	</div>
 
-
+    <script src="../js/jquery-1.12.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 
 </body></html>
 </html>

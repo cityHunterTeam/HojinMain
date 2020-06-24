@@ -113,15 +113,9 @@
 														id="button-addon2" onclick="btnPopWin(2,'txtGoEnd');">검색</button>
 												</div>
 											</div>
-											
-											
-											
-                                            <div class="form_colum">
-                                                <input id="datepicker_1" placeholder="출발일">
-                                            </div>
                                            
-                                            <div class="form_colum">
-                                                <select class="nc_select">
+  												<div class="form-group">
+    											<select class="form-control" id="exampleFormControlSelect1">
                                                     <option selected>기차종류</option>
                                                     <option value="00">KTX</option>                                                    
                                                     <option value="01">새마을호</option>
@@ -138,8 +132,13 @@
                                                     
                                                 </select>
                                             </div>
-                                            <div class="form_btn">
-                                                <a href="#" id="checkJson" class="btn_1">search</a>
+                                            
+                                            <div class="form_group" style="margin-top: 5px">
+                                                <input id="datepicker_1" placeholder="출발일">
+                                            </div>
+                                            
+                                            <div class="form_btn" style="padding-right: 20px">
+                                                <a href="#" id="checkJson" class="btn btn-secondary">search</a>
                                             </div>
                                         </div>
                                     </form>
