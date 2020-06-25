@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+    
 <!doctype html>
 <html lang="en">
 
@@ -30,7 +32,9 @@
     <link rel="stylesheet" href="../css/slick.css">
     <!-- style CSS -->
     <link rel="stylesheet" href="../css/style.css">
+    
 </head>
+ <c:set var="contextPath"  value="${pageContext.request.contextPath}"/>    
 
 <body>
   
@@ -78,7 +82,8 @@
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">
                                 <div class="booking_form">
-                                    <form name = "commentForm" id="commentForm" class="commentForm"  method="post">
+                                    <form name = "commentForm" action="${contextPath}/join" method="post">
+                              
                                         <div class="form-row">
 											<div class="input-group mb-3" style="width:25%; height:25%" >
 												<input type="text" class="form-control"
@@ -115,7 +120,7 @@
 											</div>
                                            
   												<div class="form-group">
-    											<select class="form-control" id="exampleFormControlSelect1">
+    											<select class="form-control" id="exampleFormControlSelect1" name="form_control">
                                                     <option selected>기차종류</option>
                                                     <option value="00">KTX</option>                                                    
                                                     <option value="01">새마을호</option>
@@ -134,7 +139,7 @@
                                             </div>
                                             
                                             <div class="form_group" style="margin-top: 5px">
-                                                <input id="datepicker_1" placeholder="출발일">
+                                                <input id="datepicker_1" placeholder="출발일" name="datepicker_1">
                                             </div>
                                             
                                             <div class="form_btn" style="padding-right: 20px">
@@ -653,6 +658,9 @@
     <!-- footer part end-->
 
     <!-- jquery plugins here-->
+    
+    
+    
     <script src="../js/search.js"></script>
     
     <script src="../js/jquery-1.12.1.min.js"></script>

@@ -48,7 +48,7 @@
 		<div class="cont">
 			<!-- popup content -->
 			<h2 class="tit_pop">주요역</h2>
-			<table class="table table-sm" summary="출발역을 선택 하세요." style="width: 30%">
+			<table class="table table-sm" summary="출발역을 선택 하세요." >
 				<caption>역명조회</caption>
 				<colgroup>
 					<col width="20%">
@@ -59,74 +59,75 @@
 				</colgroup>
 				<tbody>
 						<tr>
-							<td class="bg03"><a href="javascript:putStation('서울'    ,'0001')" title="KTX 정차역">서울    </a></td>
-							<td class="bg03"><a href="javascript:putStation('용산'    ,'0104')" title="KTX 정차역">용산    </a></td>
-							<td class="bg03"><a href="javascript:putStation('영등포'  ,'0002')" title="KTX 정차역">영등포  </a></td>
-							<td class="bg03"><a href="javascript:putStation('광명'    ,'0501')" title="KTX 정차역">광명    </a></td>
-							<td class="bg03"><a href="javascript:putStation('수원'    ,'0003')" title="KTX 정차역">수원    </a></td>
+							<td class="bg03"><a href="javascript:putStation('서울'    ,'NAT010000')" title="KTX 정차역">서울    </a></td>
+							<td class="bg03"><a href="javascript:putStation('용산'    ,'NAT010032')" title="KTX 정차역">용산    </a></td>
+							<td class="bg03"><a href="javascript:putStation('영등포'  ,'NAT010091')" title="KTX 정차역">영등포  </a></td>
+							<td class="bg03"><a href="javascript:putStation('광명'    ,'NATH10219')" title="KTX 정차역">광명    </a></td>
+							
+							<td class="bg03"><a href="javascript:putStation('수원'    ,'NAT010415')" title="KTX 정차역">수원    </a></td>
 						</tr>	
 						<tr>
-							<td class=""><a href="javascript:putStation('평택'    ,'0004')">평택    </a></td>
-							<td class="bg03"><a href="javascript:putStation('천안아산','0502')" title="KTX 정차역">천안아산</a></td>
-							<td class=""><a href="javascript:putStation('천안'    ,'0005')">천안    </a></td>
-							<td class="bg03"><a href="javascript:putStation('오송'    ,'0297')" title="KTX 정차역">오송    </a></td>
-							<td class=""><a href="javascript:putStation('조치원'  ,'0007')">조치원  </a></td>
+							<td class=""><a href="javascript:putStation('평택'    ,'NAT010754')">평택    </a></td>
+							<td class="bg03"><a href="javascript:putStation('천안아산','NAT080045')" title="KTX 정차역">천안아산</a></td>
+							<td class=""><a href="javascript:putStation('천안'    ,'>NAT010971')">천안    </a></td>
+							<td class="bg03"><a href="javascript:putStation('오송'    ,'NAT010570')" title="KTX 정차역">오송    </a></td>
+							<td class=""><a href="javascript:putStation('조치원'  ,'NAT011298')">조치원  </a></td>
 						</tr>
 						<tr>
-							<td class="bg03"><a href="javascript:putStation('대전'    ,'0010')" title="KTX 정차역">대전    </a></td>
-							<td class="bg03"><a href="javascript:putStation('서대전'  ,'0025')" title="KTX 정차역">서대전  </a></td>
-							<td class=""><a href="javascript:putStation('김천'    ,'0012')">김천    </a></td>
-							<td class=""><a href="javascript:putStation('구미'   ,'0013')">구미    </a></td>
-							<td class="bg03"><a href="javascript:putStation('김천구미' ,'0507')" title="KTX 정차역">김천구미</a></td>
+							<td class="bg03"><a href="javascript:putStation('대전'    ,'NAT011668')" title="KTX 정차역">대전    </a></td>
+							<td class="bg03"><a href="javascript:putStation('서대전'  ,'NAT030057')" title="KTX 정차역">서대전  </a></td>
+							<td class=""><a href="javascript:putStation('김천'    ,'NAT012546')">김천    </a></td>
+							<td class=""><a href="javascript:putStation('구미'   ,'NAT012775')">구미    </a></td>
+							<td class="bg03"><a href="javascript:putStation('김천구미' ,'NATH12383')" title="KTX 정차역">김천구미</a></td>
 						</tr>
 						<tr>
-							<td class=""><a href="javascript:putStation('대구'   ,'0023')">대구    </a></td>
-							<td class="bg03"><a href="javascript:putStation('동대구'   ,'0015')" title="KTX 정차역">동대구  </a></td>
-							<td class="bg03"><a href="javascript:putStation('포항'    ,'0515')" title="KTX 정차역">포항  </a></td>
-							<td class="bg03"><a href="javascript:putStation('밀양'    ,'0017')" title="KTX 정차역">밀양    </a></td>
-							<td class="bg03"><a href="javascript:putStation('구포'    ,'0019')" title="KTX 정차역">구포    </a></td>
+							<td class=""><a href="javascript:putStation('대구'   ,'NAT013239')">대구    </a></td>
+							<td class="bg03"><a href="javascript:putStation('동대구'   ,'NAT013271')" title="KTX 정차역">동대구  </a></td>
+							<td class="bg03"><a href="javascript:putStation('포항'    ,'NAT8B0351')" title="KTX 정차역">포항  </a></td>
+							<td class="bg03"><a href="javascript:putStation('밀양'    ,'NAT013841')" title="KTX 정차역">밀양    </a></td>
+							<td class="bg03"><a href="javascript:putStation('구포'    ,'NAT014281')" title="KTX 정차역">구포    </a></td>
 						</tr>
 						<tr>
 							<td class="bg03"><a href="javascript:putStation('부산'    ,'NAT014445')" title="KTX 정차역">부산    </a></td>
-							<td class="bg03"><a href="javascript:putStation('신경주'  ,'0508')" title="KTX 정차역">신경주  </a></td>
-							<td class=""><a href="javascript:putStation('태화강'  ,'0125')">태화강  </a></td>
-							<td class="bg03"><a href="javascript:putStation('울산(통도사)' ,'0509')" title="KTX 정차역">울산(통도사)</a></td>
-							<td class="bg03"><a href="javascript:putStation('마산'    ,'0059')" title="KTX 정차역">마산    </a></td>
+							<td class="bg03"><a href="javascript:putStation('신경주'  ,'NATH13421')" title="KTX 정차역">신경주  </a></td>
+							<td class=""><a href="javascript:putStation('태화강'  ,'NAT750726')">태화강  </a></td>
+							<td class="bg03"><a href="javascript:putStation('울산(통도사)' ,'NATH13717')" title="KTX 정차역">울산(통도사)</a></td>
+							<td class="bg03"><a href="javascript:putStation('마산'    ,'NAT880345')" title="KTX 정차역">마산    </a></td>
 						</tr>
 						<tr>
-							<td class="bg03"><a href="javascript:putStation('창원중앙','0512')" title="KTX 정차역">창원중앙</a></td>
-							<td class="bg03"><a href="javascript:putStation('경산'    ,'0024')" title="KTX 정차역">경산    </a></td>
-							<td class="bg03"><a href="javascript:putStation('논산'    ,'0027')" title="KTX 정차역">논산    </a></td>
-							<td class="bg03"><a href="javascript:putStation('익산'    ,'0030')" title="KTX 정차역">익산    </a></td>
-							<td class="bg03"><a href="javascript:putStation('정읍'    ,'0033')" title="KTX 정차역">정읍    </a></td>
+							<td class="bg03"><a href="javascript:putStation('창원중앙','NAT880281')" title="KTX 정차역">창원중앙</a></td>
+							<td class="bg03"><a href="javascript:putStation('경산'    ,'NAT013395')" title="KTX 정차역">경산    </a></td>
+							<td class="bg03"><a href="javascript:putStation('논산'    ,'NAT030508')" title="KTX 정차역">논산    </a></td>
+							<td class="bg03"><a href="javascript:putStation('익산'    ,'NAT030879')" title="KTX 정차역">익산    </a></td>
+							<td class="bg03"><a href="javascript:putStation('정읍'    ,'NAT031314')" title="KTX 정차역">정읍    </a></td>
 						</tr>
 						<tr>
-							<td class="bg03"><a href="javascript:putStation('광주송정','0036')" title="KTX 정차역">광주송정</a></td>
-							<td class="bg03"><a href="javascript:putStation('목포'    ,'0041')" title="KTX 정차역">목포    </a></td>
-							<td class="bg03"><a href="javascript:putStation('전주'    ,'0045')" title="KTX 정차역">전주    </a></td>
-							<td class="bg03"><a href="javascript:putStation('순천'    ,'0051')" title="KTX 정차역">순천    </a></td>
-							<td class="bg03 lin02"><a href="javascript:putStation('여수EXPO','0053')" title="KTX 정차역">여수EXPO(구,여수역)</a></td>
+							<td class="bg03"><a href="javascript:putStation('광주송정','NAT031857')" title="KTX 정차역">광주송정</a></td>
+							<td class="bg03"><a href="javascript:putStation('목포'    ,'NAT032563')" title="KTX 정차역">목포    </a></td>
+							<td class="bg03"><a href="javascript:putStation('전주'    ,'NAT040257')" title="KTX 정차역">전주    </a></td>
+							<td class="bg03"><a href="javascript:putStation('순천'    ,'NAT041595')" title="KTX 정차역">순천    </a></td>
+							<td class="bg03 lin02"><a href="javascript:putStation('여수EXPO','NAT041993')" title="KTX 정차역">여수EXPO(구,여수역)</a></td>
 						</tr>
 						<tr>
-							<td class=""><a href="javascript:putStation('대천'    ,'0083')">대천    </a></td>
-							<td class="bg03"><a href="javascript:putStation('청량리'  ,'0090')">청량리  </a></td>
-							<td class=""><a href="javascript:putStation('춘천'    ,'0153')">춘천    </a></td>
-							<td class=""><a href="javascript:putStation('제천'    ,'0093')">제천    </a></td>
-							<td class=""><a href="javascript:putStation('동해'    ,'0113')">동해    </a></td>
+							<td class=""><a href="javascript:putStation('대천'    ,'NAT080952')">대천    </a></td>
+							<td class="bg03"><a href="javascript:putStation('청량리'  ,'NAT130126')">청량리  </a></td>
+							<td class=""><a href="javascript:putStation('춘천'    ,'NAT140873')">춘천    </a></td>
+							<td class=""><a href="javascript:putStation('제천'    ,'NAT021549')">제천    </a></td>
+							<td class=""><a href="javascript:putStation('동해'    ,'NAT601485')">동해    </a></td>
 						</tr>
 						<tr>
-							<td class="bg03"><a href="javascript:putStation('강릉'	,'0115')" title="KTX 정차역">강릉	</a></td>
-							<td class="bg03"><a href="javascript:putStation('행신'	,'0390')" title="KTX 정차역">행신	</a></td>
-							<td class=""><a href="javascript:putStation('남춘천'	,'0152')">남춘천 	</a></td>
-							<td class=""><a href="javascript:putStation('부전'	,'0190')">부전    	</a></td>
-							<td class=""><a href="javascript:putStation('신탄진'	,'0009')">신탄진    </a></td>
+							<td class="bg03"><a href="javascript:putStation('강릉'	,'NAT601936')" title="KTX 정차역">강릉	</a></td>
+							<td class="bg03"><a href="javascript:putStation('행신'	,'NAT110147')" title="KTX 정차역">행신	</a></td>
+							<td class=""><a href="javascript:putStation('남춘천'	,'NAT140840')">남춘천 	</a></td>
+							<td class=""><a href="javascript:putStation('부전'	,'NAT750046')">부전    	</a></td>
+							<td class=""><a href="javascript:putStation('신탄진'	,'NAT011524')">신탄진    </a></td>
 						</tr>
 						<tr>
-							<td class=""><a href="javascript:putStation('영동'	,'0011')">영동    </a></td>
-							<td class=""><a href="javascript:putStation('왜관'	,'0014')">왜관    </a></td>
-							<td class=""><a href="javascript:putStation('원주'	,'0092')">원주    </a></td>
-							<td class="bg03"><a href="javascript:putStation('정동진'	,'0262')" title="KTX 정차역">정동진 </a></td>
-							<td class=""><a href="javascript:putStation('홍성'	,'0081')">홍성    </a></td>
+							<td class=""><a href="javascript:putStation('영동'	,'NAT012124')">영동    </a></td>
+							<td class=""><a href="javascript:putStation('왜관'	,'NAT012968')">왜관    </a></td>
+							<td class=""><a href="javascript:putStation('원주'	,'NAT021082')">원주    </a></td>
+							<td class="bg03"><a href="javascript:putStation('정동진'	,'NAT601774')" title="KTX 정차역">정동진 </a></td>
+							<td class=""><a href="javascript:putStation('홍성'	,'NAT080622')">홍성    </a></td>
 						</tr>
 				</tbody>
 			</table>
