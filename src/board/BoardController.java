@@ -11,6 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.catalina.Session;
 
 import board.BoardDAO;
 import board.BoardVO;
@@ -44,7 +47,7 @@ public class BoardController extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		String action = request.getPathInfo();
 		System.out.println("action:" + action);
-		if(action.equals("/do")) {
+		if(action.equals("/list.do")) {
 			//전체 글개수
 			int count = dao.getBoardCount();
 			
@@ -75,9 +78,6 @@ public class BoardController extends HttpServlet {
 				//getBoardList(각 페이지마다 맨 위에 첫번째로 보여질 시작 글번호, 한페이지당 보여줄 글개수) 
 				articleList = dao.getReadBoardList(startRow, pageSize);
 			}
-			//날짜 포맷
-			request.setAttribute("count", count);
-			request.setAttribute("articleList", articleList);
 			
 			//전체 페이지수 구하기 글 20개 한 페이지 보여줄 글수 10개 => 2페이지
 			// 글 25개 한페이지 보여줄 글 수 10개 => 3페이지 
@@ -102,14 +102,29 @@ public class BoardController extends HttpServlet {
 				//끝페이지번호를 전체페이지수로 저장
 				endPage = pageCount;
 			}
-			
+			request.setAttribute("count", count);
+			request.setAttribute("articleList", articleList);
 			request.setAttribute("startPage", startPage);
 			request.setAttribute("endPage", endPage);
 			request.setAttribute("pageBlock", pageBlock);
 			request.setAttribute("pageCount",pageCount);
 			
-			nextPage = "/Board/board.jsp";
+			nextPage = "/Board/listArticles.jsp";
+		}else if(action.equals("/write.do")){
+			nextPage = "/Board/write.jsp";
+		}else if(action.equals("/writePro.do")) {
+			HttpSession session = request.getSession();
+			String id = "yc1";
+			
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			
+			BoardVO vo = new BoardVO(id, title, content);
+			dao.insertBoard(vo);	//insert명령!
+			
+			nextPage = "/brd/list.do";
 		}
+			
 		
 		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 		dispatch.forward(request, response);

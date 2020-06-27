@@ -63,22 +63,25 @@ a{
 			</c:forEach>
 		</c:if>
 	</table>
+	<a class="cls1" href="${contextPath}/brd/write.do">
+		<p class="cls2">글쓰기</p>		
+	</a>
 	<div id="paging">
 	<c:if test="${count > 0}">
 		<c:if test="${startPage > pageBlock}">
-			<c:url var="url1" value="/brd/do">
+			<c:url var="url1" value="/brd/list.do">
 				<c:param name="pageNum" value="${startPage-pageBlock}"/>
 			</c:url>
 			<a href='${url1}'>[이전]</a>
 		</c:if>
 		
 		<c:forEach var="i" begin="${startPage}" end="${endPage}">
-		<c:url var="url2" value="/brd/do"></c:url>
+		<c:url var="url2" value="/brd/list.do"></c:url>
 			<a href='${url2}'>[${i}]</a>
 		</c:forEach>
 		
 		<c:if test="${endPage < pageCount}">
-			<c:url var="url3" value="/brd/do">
+			<c:url var="url3" value="/brd/list.do">
 				<c:param name="pageNum" value="${startPage+pageBlock}"/>
 			</c:url>
 			<a href='${url3}'>[다음]</a>
