@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,19 +12,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.BoardVO;
 import board.BoardDAO;
+import board.BoardVO;
 
-
-
-@WebServlet("/brd")
+@WebServlet("/brd/*")
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	BoardDAO dao;
 	
 	public void init(ServletConfig config) throws ServletException {
-		BoardDAO dao = new BoardDAO();
+		dao = new BoardDAO();
 
 	}
 
@@ -40,16 +39,17 @@ public class BoardController extends HttpServlet {
 	
 	protected void doHandle(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String nextPage = "";
+		String nextPage = null;
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-		
 		String action = request.getPathInfo();
 		System.out.println("action:" + action);
-		if (action==null) {
+		if(action.equals("/do")) {
 			//전체 글개수
 			int count = dao.getBoardCount();
+			
 			//하나의 화면마다 보여줄 글 개수 15
+			System.out.println(count);
 			int pageSize = 10;
 			
 			//현재 보여질(선택한) 페이지번호 가져오기
@@ -76,7 +76,6 @@ public class BoardController extends HttpServlet {
 				articleList = dao.getReadBoardList(startRow, pageSize);
 			}
 			//날짜 포맷
-			SimpleDateFormat sdf = new SimpleDateFormat("yyy.MM.dd");
 			request.setAttribute("count", count);
 			request.setAttribute("articleList", articleList);
 			
@@ -109,11 +108,11 @@ public class BoardController extends HttpServlet {
 			request.setAttribute("pageBlock", pageBlock);
 			request.setAttribute("pageCount",pageCount);
 			
-			nextPage = "/board/listArticles.jsp";		
-
-			
-		
+			nextPage = "/Board/board.jsp";
 		}
+		
+		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
+		dispatch.forward(request, response);
 	}
 
 }

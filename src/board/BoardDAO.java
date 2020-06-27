@@ -85,7 +85,8 @@ public class BoardDAO {
 				public int getBoardCount() {
 					String sql ="";
 					int count = 0; //검색한 전체 글수를 저장할 용도
-					
+					System.out.println(count);
+
 					try {
 						//DB연결 
 						con = getConnection();
@@ -94,18 +95,13 @@ public class BoardDAO {
 						rs = pstmt.executeQuery(); //select문 실행 
 						
 						if(rs.next()) {
-							count = rs.getInt(1); //검색한 전체 글 개수 얻기 
+							count = rs.getInt("count(*)"); //검색한 전체 글 개수 얻기 
+							System.out.println(count);
 						}
 					}catch(Exception e) {
 						System.out.println("getBoardCount메소드에서 예외발생 : "+e);
 					}finally {
-						try {
-							if(rs != null) {rs.close();}
-							if(pstmt != null) {pstmt.close();}
-							if(con != null) {con.close();}
-							}catch(SQLException e) {
-								e.printStackTrace();
-							}
+						freeResource();
 					}
 					return count;	//검색한 전체 글 수 notice.jsp로 반환   
 				}
