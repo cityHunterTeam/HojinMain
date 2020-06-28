@@ -124,6 +124,8 @@ public class MemberController extends HttpServlet {
 			session.invalidate();
 			nextPage = "/member/deleteMem.jsp";
 			
+		}else {
+			nextPage = "/mem/index.do";
 		}
 
 		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);

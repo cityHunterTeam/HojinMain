@@ -85,7 +85,7 @@
                                         <a class="nav-link" href="${contextPath}/mem/index.do">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../about.jsp">About</a>
+                                        <a class="nav-link" href="${contextPath}/brd/list.do">게시판</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="../packages.jsp">packages</a>

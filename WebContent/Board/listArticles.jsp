@@ -21,28 +21,34 @@ a{
 
 }
 
-#paging {
-	text-align: center;
-	font-size: 2em;
-	font-style: normal;
-	margin: 1em;
-	
-}
+
 </style>
  <c:set var="contextPath"  value="${pageContext.request.contextPath}"/>    
+
+<jsp:include page="/member/header.jsp"/>
 
 <meta charset="UTF-8">
 <title>글목록</title>
 </head>
 <body>
-	<table align="center" border="1" width="80%">
-		<tr height="10" align="center" bgcolor="lightgreen">
-			<td>글번호</td>
-			<td>작성자</td>
-			<td>글제목</td>
-			<td>작성일</td>
-		</tr>
-
+	<table class="table table-hover text-center">
+				<colgroup class="d-none d-lg-table-column-group">
+					<col style="width:80px"/>
+					<col />
+					<col style="width:100px"/>
+					<col style="width:100px"/>
+					<col style="width:100px"/>
+				</colgroup>
+				<thead class="thead-light d-none d-lg-table-header-group">
+					<tr height="10" align="center" bgcolor="lightgreen">
+						<td>글번호</td>
+						<td>작성자</td>
+						<td>글제목</td>
+						<td>작성일</td>
+					</tr>
+				</thead>
+				<tbody>
+				
 		<c:if test="${articleList== null}">
 			<tr height="10">
 				<td colspan="4">
@@ -62,31 +68,43 @@ a{
 				</tr>
 			</c:forEach>
 		</c:if>
+		</tbody>
 	</table>
-	<a class="cls1" href="${contextPath}/brd/write.do">
-		<p class="cls2">글쓰기</p>		
-	</a>
-	<div id="paging">
-	<c:if test="${count > 0}">
-		<c:if test="${startPage > pageBlock}">
-			<c:url var="url1" value="/brd/list.do">
-				<c:param name="pageNum" value="${startPage-pageBlock}"/>
-			</c:url>
-			<a href='${url1}'>[이전]</a>
-		</c:if>
-		
-		<c:forEach var="i" begin="${startPage}" end="${endPage}">
-		<c:url var="url2" value="/brd/list.do"></c:url>
-			<a href='${url2}'>[${i}]</a>
-		</c:forEach>
-		
-		<c:if test="${endPage < pageCount}">
-			<c:url var="url3" value="/brd/list.do">
-				<c:param name="pageNum" value="${startPage+pageBlock}"/>
-			</c:url>
-			<a href='${url3}'>[다음]</a>
-		</c:if>
-	</c:if>
+	<c:if test="${not empty sessionScope.id}">
+	<div class="form-group text-center text-lg-center">
+		<button type="button" class="btn btn-secondary" onclick="location.href='${contextPath}/brd/write.do'">글쓰기</button>			
 	</div>
+	</c:if>
+	<div class="row">
+		<div class="col-12">
+			<ul class="pagination justify-content-center">
+			<c:if test="${count > 0}">
+				<c:if test="${startPage > pageBlock}">
+					<c:url var="url1" value="/brd/list.do">
+						<c:param name="pageNum" value="${startPage-pageBlock}"/>
+					</c:url>
+						<a style="font-size: xx-large;" class="page-link" href='${url1}'>Previous</a>
+				</c:if>
+			
+				<c:forEach var="i" begin="${startPage}" end="${endPage}">
+				<c:url var="url2" value="/brd/list.do">
+				<c:param name="pageNum" value="${i}"/>
+				</c:url>
+						<a style="font-size: xx-large;" class="page-link" href='${url2}'>${i}</a>
+				</c:forEach>
+				
+				<c:if test="${endPage < pageCount}">
+					<c:url var="url3" value="/brd/list.do">
+						<c:param name="pageNum" value="${startPage+pageBlock}"/>
+					</c:url>
+						<a style="font-size: xx-large;" class="page-link" href='${url3}'>Next</a>
+				</c:if>
+			</c:if>
+			</ul>
+		</div>
+	</div>
+	<br>
+	<br>
 </body>
+<jsp:include page="/member/footer.jsp"/>
 </html>

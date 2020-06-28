@@ -84,7 +84,7 @@ public class BoardController extends HttpServlet {
 			// 조건 (삼항)연산자 조건? 참 : 거짓 
 			//전체 페이지수 = 전체글/ 한페이지에 보여줄 글 수 + (전체글수를 한페이지에 보여줄 글수로 나눈 나머지값) 
 			int pageCount = count/pageSize+(count%pageSize == 0?0:1);
-			int pageBlock = 5;
+			int pageBlock = 3;
 			
 			/* 시작페이지 번호 구하기 */
 			// 1 ~ 10 => 1 11~ 20 => 11 21~30 => 21
@@ -113,8 +113,7 @@ public class BoardController extends HttpServlet {
 		}else if(action.equals("/write.do")){
 			nextPage = "/Board/write.jsp";
 		}else if(action.equals("/writePro.do")) {
-			HttpSession session = request.getSession();
-			String id = "yc1";
+			String id = request.getParameter("id");
 			
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
