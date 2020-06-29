@@ -7,8 +7,8 @@
 	type="javax.sql.DataSource"
 	driverClassName="com.mysql.jdbc.Driver"
 	url="jdbc:mysql://localhost:3306/travel?serverTimezone=Asia/Seoul"
-	username="root"
-	password="1234"	
+	username="jspid"
+	password="jsppass"	
 	/>
 
 </Context>

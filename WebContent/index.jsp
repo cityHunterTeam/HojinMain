@@ -56,7 +56,7 @@
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">
                                 <div class="booking_form">
-                                    <form name = "commentForm" action="${contextPath}/join" method="post">
+                                    <form name = "commentForm" action="${contextPath}/join/do" method="post">
                               
                                         <div class="form-row">
 											<div class="input-group mb-3" style="width:25%; height:25%" >
@@ -117,7 +117,8 @@
                                             </div>
                                             
                                             <div class="form_btn" style="padding-right: 20px">
-                                                <a href="#" id="checkJson" class="btn btn-secondary">search</a>
+                                                <a href="${contextPath}/json/do" id="checkJson" class="btn btn-secondary">search</a>
+                                                
                                             </div>
                                         </div>
                                     </form>
