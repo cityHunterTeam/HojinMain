@@ -11,6 +11,11 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.servlet.RequestDispatcher;
@@ -29,6 +34,9 @@ import org.json.XML;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import search.GetTagValue;
 
 @WebServlet("/json/*")
 public class searchController extends HttpServlet {
@@ -109,29 +117,36 @@ public class searchController extends HttpServlet {
 	        	
 	        	output.print(sb.toString());
 	        	output.close();
+	        	
 	        	Document doc = dBuilder.parse(path+"/search");
 	        	doc.getDocumentElement().normalize();
 	        	
-	        	Element body = (Element) doc.getElementsByTagName("body").item(0);
-	        	Element items = (Element) body.getElementsByTagName("items").item(0);
-	        	Element item = (Element) items.getElementsByTagName("item").item(0);
+	        	NodeList nList = doc.getElementsByTagName("item");
+	        	List list = new ArrayList();
+	        	GetTagValue gt = new GetTagValue();
+	        	for(int temp=0; temp < nList.getLength(); temp++) {
+	        		Node nNode = nList.item(temp);
+	        		if(nNode.getNodeType() == Node.ELEMENT_NODE) {
+	        			Element eElement = (Element) nNode;
+	        			Map hash = new HashMap();
+	                	
+	        			System.out.println("출발역 :" +gt.getTagValue("depplacename",eElement));
+	        			hash.put("depplacename",gt.getTagValue("depplacename",eElement));
+	        			System.out.println("도착역 :" +gt.getTagValue("arrplacename",eElement));
+	        			hash.put("arrplacename",gt.getTagValue("arrplacename",eElement));
+	        			System.out.println("어른 요금 :" + gt.getTagValue("adultcharge", eElement));
+	        			hash.put("adultcharge",gt.getTagValue("adultcharge",eElement));
+	        			System.out.println("출발일 :" + gt.getTagValue("depplandtime", eElement));
+	        			hash.put("depplandtime",gt.getTagValue("depplandtime", eElement));
+	        			list.add(hash);
+	        		}
+	        	}
 	        	
-	        	arrplacename = item.getElementsByTagName("arrplacename").item(0);
-	        	depplacename = item.getElementsByTagName("depplacename").item(0);
-	        	System.out.println(arrplacename.getNodeName());
-	        	System.out.println(arrplacename.getChildNodes().item(0).getNodeValue());
-	        	
-	        	System.out.println(depplacename.getNodeName());
-	        	System.out.println(depplacename.getChildNodes().item(0).getNodeValue());
 	        }catch (Exception e) {
 	        	e.printStackTrace();
 	        }
 	        rd.close();
 	        conn.disconnect();
-	        	
-	        	
-	        	
-		
 			nextPage = "/mem/index.do";
 			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 			dispatch.forward(request, response);
