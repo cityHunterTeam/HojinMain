@@ -50,7 +50,7 @@ a{
 				</thead>
 				<tbody>
 				
-		<c:if test="${articleList== null}">
+		<c:if test="${hashlist== null}">
 			<tr height="10">
 				<td colspan="4">
 					<p align="center">
@@ -59,25 +59,23 @@ a{
 				</td>
 			</tr>	
 		</c:if>
-		<c:if test="${articleList != null}">
-			<c:forEach var="article" items="${articleList}" varStatus="articleNum" >
+		<c:if test="${hashlist != null}">
+		
+			<c:forEach var="hash" items="${hashlist}">
+				<c:forEach var="article" items="${hash}">
 				<tr align="center">
 					<%--varStatus의 count속성을 이용해 글번호를 1부터 자동으로 표시함 --%>
-					<td width="5%">${articleNum.count}</td>
-					<td width="5%">${article.num}</td>
-					<td width="10%">${article.id}</td>
-					<td width="20%">${article.title}</td>
-					<td width="5%"><fmt:formatDate value="${article.date}"/></td>
+					<td width="10%">"${article.value}"</td>
+					<td width="10%">"${article.value}"</td>
+					<td width="10%">"${article.value}"</td>
+					<td width="10%">"${article.value}"</td>
 				</tr>
+				</c:forEach>
 			</c:forEach>
 		</c:if>
 		</tbody>
 	</table>
-	<c:if test="${not empty sessionScope.id}">
-	<div class="form-group text-center text-lg-center">
-		<button type="button" class="btn btn-secondary" onclick="location.href='${contextPath}/brd/write.do'">글쓰기</button>			
-	</div>
-	</c:if>
+	
 	<div class="row">
 		<div class="col-12">
 			<ul class="pagination justify-content-center">

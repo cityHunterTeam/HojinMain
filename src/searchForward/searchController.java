@@ -110,11 +110,7 @@ public class searchController extends HttpServlet {
 	        	File dir = new File(path);
 	        	if(!dir.exists())dir.mkdir();
 	        	File file = new File(dir,"search");
-	        	PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(file)));
-//	        	FileOutputStream output = new FileOutputStream("/PM10");
-//	        	output.write(sb.toString().getBytes());
-//	        	output.close();
-	        	
+	        	PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(file)));	        	
 	        	output.print(sb.toString());
 	        	output.close();
 	        	
@@ -142,12 +138,14 @@ public class searchController extends HttpServlet {
 	        		}
 	        	}
 	        	
+	        	request.setAttribute("hashlist", list);
+	        	
 	        }catch (Exception e) {
 	        	e.printStackTrace();
 	        }
 	        rd.close();
 	        conn.disconnect();
-			nextPage = "/mem/index.do";
+			nextPage = "/search/searchlist.jsp";
 			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 			dispatch.forward(request, response);
 		}
