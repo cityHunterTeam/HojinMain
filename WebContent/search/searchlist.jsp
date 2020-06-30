@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,47 +32,40 @@ a{
 <title>글목록</title>
 </head>
 <body>
-	<table class="table table-hover text-center">
-				<colgroup class="d-none d-lg-table-column-group">
-					<col style="width:80px"/>
-					<col />
-					<col style="width:100px"/>
-					<col style="width:100px"/>
-					<col style="width:100px"/>
-				</colgroup>
-				<thead class="thead-light d-none d-lg-table-header-group">
+	<table class="table table-hover text-center" style="width: 80%; margin:auto;" >
+				<thead>
 					<tr height="10" align="center" bgcolor="lightgreen">
-						<td>글번호</td>
+						<td>출발일</td>
 						<td>출발역</td>
 						<td>도착역</td>
-						<td>어른요금</td>
-						<td>출발일</td>
+						<td>운임요금</td>
 					</tr>
 				</thead>
 				<tbody>
-				
-		<c:if test="${hashlist== null}">
+		<c:if test="${fn:length(hashlist) == 0}">
 			<tr height="10">
 				<td colspan="4">
 					<p align="center">
-						<b><span style="font-size:9pt;">등록된 글이 없습니다.</span></b>
+							<br>
+						<b><span style="font-size:20pt;">해당하는 열차가 없습니다.</span></b>
 					</p>
 				</td>
 			</tr>	
 		</c:if>
-		<c:if test="${hashlist != null}">
+		<c:if test="${fn:length(hashlist) != 0}">
 		
-			<c:forEach var="hash" items="${hashlist}">
-				<c:forEach var="article" items="${hash}">
+			<c:forEach var="hash" items="${hashlist}" >
 				<tr align="center">
-					<%--varStatus의 count속성을 이용해 글번호를 1부터 자동으로 표시함 --%>
-					<td width="10%">"${article.value}"</td>
-					<td width="10%">"${article.value}"</td>
-					<td width="10%">"${article.value}"</td>
-					<td width="10%">"${article.value}"</td>
+					<c:if test="${hash['adultcharge'] != 0}">
+<%-- 					<td width="10%"><fmt:formatDate value="${hash['depplandtime']}" pattern="yyyy-MM-dd kk:mm"/></td> --%>
+					<td width="10%">${hash["depplandtime"]}</td>
+					<td width="10%">${hash["depplacename"]}</td>
+					<td width="10%">${hash["arrplacename"]}</td>
+					<td width="10%">${hash["adultcharge"]}원</td>
+					</c:if>
 				</tr>
-				</c:forEach>
 			</c:forEach>
+			
 		</c:if>
 		</tbody>
 	</table>
