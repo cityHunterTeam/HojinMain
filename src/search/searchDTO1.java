@@ -54,11 +54,11 @@ public class searchDTO1{
         	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         	DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         	
-        	FileOutputStream output = new FileOutputStream("./WebContent/SearchXml/PM10");
+        	FileOutputStream output = new FileOutputStream("/PM10");
         	output.write(sb.toString().getBytes());
         	output.close();
         	
-        	Document doc = dBuilder.parse("./WebContent/SearchXml/PM10");
+        	Document doc = dBuilder.parse("/PM10");
         	doc.getDocumentElement().normalize();
         	
         	Element body = (Element) doc.getElementsByTagName("body").item(0);
