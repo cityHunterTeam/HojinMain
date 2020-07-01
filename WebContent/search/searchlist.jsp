@@ -57,8 +57,7 @@ a{
 			<c:forEach var="hash" items="${hashlist}" >
 				<tr align="center">
 					<c:if test="${hash['adultcharge'] != 0}">
-<%-- 					<td width="10%"><fmt:formatDate value="${hash['depplandtime']}" pattern="yyyy-MM-dd kk:mm"/></td> --%>
-					<td width="10%">${hash["depplandtime"]}</td>
+					<td width="10%"><fmt:formatDate value="${hash['depplandtime']}" pattern="yyyy-MM-dd kk:mm"/></td>
 					<td width="10%">${hash["depplacename"]}</td>
 					<td width="10%">${hash["arrplacename"]}</td>
 					<td width="10%">${hash["adultcharge"]}원</td>

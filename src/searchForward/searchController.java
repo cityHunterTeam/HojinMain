@@ -11,7 +11,10 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -133,7 +136,19 @@ public class searchController extends HttpServlet {
 	        			System.out.println("어른 요금 :" + gt.getTagValue("adultcharge", eElement));
 	        			hash.put("adultcharge",gt.getTagValue("adultcharge",eElement));
 	        			System.out.println("출발일 :" + gt.getTagValue("depplandtime", eElement));
-	        			hash.put("depplandtime",gt.getTagValue("depplandtime", eElement));
+	        			String depplandtime = gt.getTagValue("depplandtime", eElement);
+	        			
+	        			year = depplandtime.substring(0,4);
+	        			month = depplandtime.substring(4,6);
+	        			nal = depplandtime.substring(6,8);
+	        			String hour = depplandtime.substring(8,10);
+	        			String min = depplandtime.substring(10,12);
+	        			String sec = depplandtime.substring(12,14);
+
+	        			depplandtime = year+"-"+month+"-"+nal+" "+hour+":"+min+":"+sec;
+	        			java.sql.Timestamp time = java.sql.Timestamp.valueOf(depplandtime);
+	        			hash.put("depplandtime",time);
+	        			
 	        			list.add(hash);
 	        		}
 	        	}
