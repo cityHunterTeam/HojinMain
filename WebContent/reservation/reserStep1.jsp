@@ -32,14 +32,7 @@ a{
 </head>
 <body>
 	<table class="table table-hover text-center">
-				<colgroup class="d-none d-lg-table-column-group">
-					<col style="width:80px"/>
-					<col />
-					<col style="width:100px"/>
-					<col style="width:100px"/>
-					<col style="width:100px"/>
-				</colgroup>
-				<thead class="thead-light d-none d-lg-table-header-group">
+				<thead >
 					<tr height="10" align="center" bgcolor="lightgreen">
 						<td>예약번호</td>
 						<td>출발지</td>
@@ -51,11 +44,11 @@ a{
 				<tbody>
 				
 				<tr align="center">
-					<td width="5%">${hash.num}</td>
-					<td width="10%">${hash.depplacename}</td>
-					<td width="10%">${hash.arrplacename}</td>
-					<td width="10%">${hash.traingradename}</td>
-					<td width="10%">${hash.adultcharge}</td>
+					<td width="5%">${vo.traingradename}</td>
+					<td width="10%">${vo.adultcharge}</td>
+				<td width="10%"><fmt:formatDate value="${vo.depplandtime}" pattern="yyyy-MM-dd kk:mm"/></td> 
+					<td width="10%">${vo.depplacename}</td>
+					<td width="10%">${vo.arrplacename}</td>
 				</tr>
 		</tbody>
 	</table>

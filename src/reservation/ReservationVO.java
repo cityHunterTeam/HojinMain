@@ -7,7 +7,7 @@ public class ReservationVO {
 	String depplacename;
 	String arrplacename;
 	String traingradename;
-	String depplandtime;
+	Timestamp depplandtime;
 	Timestamp reser_date;
 	int adultcharge;
 	String seat;
@@ -16,7 +16,9 @@ public class ReservationVO {
 	int count;
 	
 	
-	public ReservationVO(String depplacename, String arrplacename, String traingradename, String depplandtime,
+
+	
+	public ReservationVO(String depplacename, String arrplacename, String traingradename, Timestamp depplandtime,
 			int adultcharge) {
 		super();
 		this.depplacename = depplacename;
@@ -26,10 +28,10 @@ public class ReservationVO {
 		this.adultcharge = adultcharge;
 	}
 	
-	
 	public ReservationVO() {
 		
 	}
+	
 	public int getNum() {
 		return num;
 	}
@@ -84,13 +86,15 @@ public class ReservationVO {
 	public void setCount(int count) {
 		this.count = count;
 	}
-	public String getTraingradename() {
-		return traingradename;
+
+	public Timestamp getDepplandtime() {
+		return depplandtime;
 	}
-	public void setTraingradename(String traingradename) {
-		this.traingradename = traingradename;
+
+	public void setDepplandtime(Timestamp depplandtime) {
+		this.depplandtime = depplandtime;
 	}
-	
+
 	
 	
 }
