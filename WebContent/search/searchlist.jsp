@@ -35,10 +35,12 @@ a{
 	<table class="table table-hover text-center" style="width: 80%; margin:auto;" >
 				<thead>
 					<tr height="10" align="center" bgcolor="lightgreen">
+						<td>기차종류</td>
 						<td>출발일</td>
 						<td>출발역</td>
 						<td>도착역</td>
 						<td>운임요금</td>
+						<td>에약하기</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -57,10 +59,19 @@ a{
 			<c:forEach var="hash" items="${hashlist}" >
 				<tr align="center">
 					<c:if test="${hash['adultcharge'] != 0}">
+					<td width="10%">${hash["traingradename"]}</td>
 					<td width="10%"><fmt:formatDate value="${hash['depplandtime']}" pattern="yyyy-MM-dd kk:mm"/></td>
 					<td width="10%">${hash["depplacename"]}</td>
 					<td width="10%">${hash["arrplacename"]}</td>
 					<td width="10%">${hash["adultcharge"]}원</td>
+					<c:url var="url1" value="/res/seat.do">
+						<c:param name="traingradename" value="${hash['traingradename']}"/>					
+						<c:param name="adultcharge" value="${hash['adultcharge']}"/>
+						<c:param name="depplandtime" value="${hash['depplandtime']}"/>
+						<c:param name="depplacename" value="${hash['depplacename']}"/>
+						<c:param name="arrplacename" value="${hash['arrplacename']}"/>	
+					</c:url>
+					<td width="10%"><a href="${url1}">예약하기</a></td>
 					</c:if>
 				</tr>
 			</c:forEach>
@@ -69,34 +80,7 @@ a{
 		</tbody>
 	</table>
 	
-	<div class="row">
-		<div class="col-12">
-			<ul class="pagination justify-content-center">
-			<c:if test="${count > 0}">
-				<c:if test="${startPage > pageBlock}">
-					<c:url var="url1" value="/brd/list.do">
-						<c:param name="pageNum" value="${startPage-pageBlock}"/>
-					</c:url>
-						<a style="font-size: xx-large;" class="page-link" href='${url1}'>Previous</a>
-				</c:if>
-			
-				<c:forEach var="i" begin="${startPage}" end="${endPage}">
-				<c:url var="url2" value="/brd/list.do">
-				<c:param name="pageNum" value="${i}"/>
-				</c:url>
-						<a style="font-size: xx-large;" class="page-link" href='${url2}'>${i}</a>
-				</c:forEach>
-				
-				<c:if test="${endPage < pageCount}">
-					<c:url var="url3" value="/brd/list.do">
-						<c:param name="pageNum" value="${startPage+pageBlock}"/>
-					</c:url>
-						<a style="font-size: xx-large;" class="page-link" href='${url3}'>Next</a>
-				</c:if>
-			</c:if>
-			</ul>
-		</div>
-	</div>
+	
 	<br>
 	<br>
 </body>

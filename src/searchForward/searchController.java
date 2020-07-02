@@ -39,6 +39,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import reservation.ReservationVO;
 import search.GetTagValue;
 
 @WebServlet("/json/*")
@@ -137,7 +138,7 @@ public class searchController extends HttpServlet {
 	        			hash.put("adultcharge",gt.getTagValue("adultcharge",eElement));
 	        			System.out.println("출발일 :" + gt.getTagValue("depplandtime", eElement));
 	        			String depplandtime = gt.getTagValue("depplandtime", eElement);
-	        			
+	        			hash.put("traingradename",gt.getTagValue("traingradename", eElement));
 	        			year = depplandtime.substring(0,4);
 	        			month = depplandtime.substring(4,6);
 	        			nal = depplandtime.substring(6,8);
@@ -152,7 +153,6 @@ public class searchController extends HttpServlet {
 	        			list.add(hash);
 	        		}
 	        	}
-	        	
 	        	request.setAttribute("hashlist", list);
 	        	
 	        }catch (Exception e) {
