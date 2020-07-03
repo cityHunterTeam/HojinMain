@@ -59,8 +59,8 @@ public class ReservationController extends HttpServlet {
 			
 			ReservationVO vo = new ReservationVO(depplacename,arrplacename,traingradename,depplandtime,adultcharge);
 			request.setAttribute("vo", vo);
-//			HttpSession session = request.getSession();
-//			session.setAttribute("vo", vo);
+			HttpSession session = request.getSession();
+			session.setAttribute("vo", vo);
 			nextPage = "/reservation/reserStep1.jsp";
 		}
 			

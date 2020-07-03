@@ -95,7 +95,14 @@ public class ReservationVO {
 		this.depplandtime = depplandtime;
 	}
 
-	
+	public String getTraingradename() {
+		return traingradename;
+	}
+
+	public void setTraingradename(String traingradename) {
+		this.traingradename = traingradename;
+	}
+
 	
 }
 
