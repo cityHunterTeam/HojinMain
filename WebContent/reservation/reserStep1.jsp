@@ -49,6 +49,8 @@ a {
 		
 				
 				<tbody>
+					<tr><td>고객ID</td><td>${mvo.id}</td></tr>
+					<tr><td>고객Email</td><td>${mvo.email}</td></tr>
 					<tr><td>기차종류</td><td>${vo.traingradename}</td></tr>  
 					<tr><td>출발시간</td><td><fmt:formatDate value="${vo.depplandtime}" pattern="yyyy-MM-dd kk:mm"/></td></tr>  
 					<tr><td>출발지</td><td>${vo.depplacename}</td></tr>
@@ -58,7 +60,7 @@ a {
 				</tbody>
 	</table>
 
-	<div class="seat-wrapper" style="text-align: center">   <script>
+	  <script>
         // html 이 다 로딩된 후 실행
         $(document).ready(function() {
             // 체크박스들이 변경됬을때
@@ -83,8 +85,11 @@ a {
         });
     </script>
     <br>
+<form action="${contextPath}/res/reserv.do" method="post" style="border:1px solid #ccc">
+
+<div class="seat-wrapper" style="text-align: center"> 
     <span>인원수 선택 : </span>
-    <select id="person">
+    <select id="person" name="person">
         <option value="1">1명</option>
         <option value="2">2명</option>
         <option value="3">3명</option>
@@ -94,41 +99,44 @@ a {
         <option value="7">7명</option>
         
     </select>
+    </div>
+
     <br>
     <br>
     <table border="1" style="width:50%; margin:auto">
     
         <tr>
         <c:forEach var="i" begin="1" end="20">
-            <td><label><input type="checkbox"/>A${i}</label></td>
+            <td><label><input type="checkbox" name="seatlist" value="A${i}"/>A${i}</label></td>
         </c:forEach>
         </tr>
         <tr>
         <c:forEach var="i" begin="1" end="20">
-            <td><label><input type="checkbox"/>B${i}</label></td>
+            <td><label><input type="checkbox" name="seatlist" value="B${i}"/>B${i}</label></td>
         </c:forEach>    
         </tr>
         <tr>
         <c:forEach var="i" begin="1" end="20">
-            <td><label><input type="checkbox"/>C${i}</label></td>
+            <td><label><input type="checkbox" name="seatlist" value="C${i}"/>C${i}</label></td>
         </c:forEach>    
         </tr>
         <tr>
         <c:forEach var="i" begin="1" end="20">
-            <td><label><input type="checkbox"/>D${i}</label></td>
+            <td><label><input type="checkbox" name="seatlist" value="D${i}"/>D${i}</label></td>
         </c:forEach>    
         </tr>
         
     </table>
     <br>
-	</div>
 	<br>
+		
+	<input type="hidden" name="id" value="${mvo.id}">
+	<input type="hidden" name="email" value="${mvo.email}">
 	<div style="text-align:center">
-	<button type="button" class="btn btn-warning">결제진행</button>
+	<button type="submit" class="btn btn-warning">결제진행</button>
 	</div>
-	
-	
-	
+ 	
+</form>	
 </body>
 <jsp:include page="/member/footer.jsp"/>
 </html>

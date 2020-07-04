@@ -46,7 +46,7 @@ public class searchDTO1{
         urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지 번호*/
         urlBuilder.append("&" + URLEncoder.encode("depPlaceId","UTF-8") + "=" + URLEncoder.encode("NAT010000", "UTF-8")); /*출발기차역ID*/
         urlBuilder.append("&" + URLEncoder.encode("arrPlaceId","UTF-8") + "=" + URLEncoder.encode("NAT011668", "UTF-8")); /*도착기차역ID*/
-        urlBuilder.append("&" + URLEncoder.encode("depPlandTime","UTF-8") + "=" + URLEncoder.encode("20200101", "UTF-8")); /*출발일*/
+        urlBuilder.append("&" + URLEncoder.encode("depPlandTime","UTF-8") + "=" + URLEncoder.encode("20200708", "UTF-8")); /*출발일*/
         urlBuilder.append("&" + URLEncoder.encode("trainGradeCode","UTF-8") + "=" + URLEncoder.encode("00", "UTF-8")); /*차량종류코드*/
         URL url = new URL(urlBuilder.toString());
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -68,57 +68,59 @@ public class searchDTO1{
         conn.disconnect();
       System.out.println(sb.toString());
         
-        try {
-        	Node arrplacename = null;
-        	Node depplacename = null;
-        	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        	DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        	
-        	FileOutputStream output = new FileOutputStream("/PM10");
-        	output.write(sb.toString().getBytes());
-        	output.close();
-        	
-        	Document doc = dBuilder.parse("/PM10");
-        	doc.getDocumentElement().normalize();
-        	
-        	NodeList nList = doc.getElementsByTagName("item");
-        	List list = new ArrayList();
-        	
-        	for(int temp=0; temp < nList.getLength(); temp++) {
-        		Node nNode = nList.item(temp);
-        		if(nNode.getNodeType() == Node.ELEMENT_NODE) {
-        			Element eElement = (Element) nNode;
-        			Map hash = new HashMap();
-                	
-        			System.out.println("출발역 :" +getTagValue("depplacename",eElement));
-        			hash.put("depplacename",getTagValue("depplacename",eElement));
-        			System.out.println("도착역 :" +getTagValue("arrplacename",eElement));
-        			hash.put("arrplacename",getTagValue("arrplacename",eElement));
-        			System.out.println("어른 요금 :" + getTagValue("adultcharge", eElement));
-        			hash.put("adultcharge",getTagValue("adultcharge",eElement));
-        			System.out.println("출발일 :" + getTagValue("depplandtime", eElement));
-        			hash.put("depplandtime",getTagValue("depplandtime", eElement));
-        			list.add(hash);
-        		}
-        	}
-        	
-        	
-        	
-        	
-//        	Element body = (Element) doc.getElementsByTagName("body").item(0);
-//        	Element items = (Element) body.getElementsByTagName("items").item(0);
-//        	Element item = (Element) items.getElementsByTagName("item").item(0);
+//        try {
+//        	Node arrplacename = null;
+//        	Node depplacename = null;
+//        	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+//        	DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 //        	
-//        	arrplacename = item.getElementsByTagName("arrplacename").item(0);
-//        	depplacename = item.getElementsByTagName("depplacename").item(0);
-//        	System.out.println(arrplacename.getNodeName());
-//        	System.out.println(arrplacename.getChildNodes().item(0).getNodeValue());
+//        	FileOutputStream output = new FileOutputStream("/PM10");
+//        	output.write(sb.toString().getBytes());
+//        	output.close();
 //        	
-//        	System.out.println(depplacename.getNodeName());
-//        	System.out.println(depplacename.getChildNodes().item(0).getNodeValue());
-        }catch (Exception e) {
-        	e.printStackTrace();
-        }
+//        	Document doc = dBuilder.parse("/PM10");
+//        	doc.getDocumentElement().normalize();
+//        	
+//        	NodeList nList = doc.getElementsByTagName("item");
+//        	List list = new ArrayList();
+//        	
+//        	for(int temp=0; temp < nList.getLength(); temp++) {
+//        		Node nNode = nList.item(temp);
+//        		if(nNode.getNodeType() == Node.ELEMENT_NODE) {
+//        			Element eElement = (Element) nNode;
+//        			Map hash = new HashMap();
+//                	
+//        			System.out.println("출발역 :" +getTagValue("depplacename",eElement));
+//        			hash.put("depplacename",getTagValue("depplacename",eElement));
+//        			System.out.println("도착역 :" +getTagValue("arrplacename",eElement));
+//        			hash.put("arrplacename",getTagValue("arrplacename",eElement));
+//        			System.out.println("어른 요금 :" + getTagValue("adultcharge", eElement));
+//        			hash.put("adultcharge",getTagValue("adultcharge",eElement));
+//        			System.out.println("출발일 :" + getTagValue("depplandtime", eElement));
+//        			hash.put("depplandtime",getTagValue("depplandtime", eElement));
+//        			list.add(hash);
+//        		}
+//        	}
+//        	
+//        	
+//        	
+//        	
+////        	Element body = (Element) doc.getElementsByTagName("body").item(0);
+////        	Element items = (Element) body.getElementsByTagName("items").item(0);
+////        	Element item = (Element) items.getElementsByTagName("item").item(0);
+////        	
+////        	arrplacename = item.getElementsByTagName("arrplacename").item(0);
+////        	depplacename = item.getElementsByTagName("depplacename").item(0);
+////        	System.out.println(arrplacename.getNodeName());
+////        	System.out.println(arrplacename.getChildNodes().item(0).getNodeValue());
+////        	
+////        	System.out.println(depplacename.getNodeName());
+////        	System.out.println(depplacename.getChildNodes().item(0).getNodeValue());
+//        }catch (Exception e) {
+//        	e.printStackTrace();
+//        }
         
     }
+    
 }
+
