@@ -49,8 +49,8 @@ a {
 		
 				
 				<tbody>
-					<tr><td>고객ID</td><td>${mvo.id}</td></tr>
-					<tr><td>고객Email</td><td>${mvo.email}</td></tr>
+					<tr><td>고객 ID</td><td>${mvo.id}</td></tr>
+					<tr><td>고객 Email</td><td>${mvo.email}</td></tr>
 					<tr><td>기차종류</td><td>${vo.traingradename}</td></tr>  
 					<tr><td>출발시간</td><td><fmt:formatDate value="${vo.depplandtime}" pattern="yyyy-MM-dd kk:mm"/></td></tr>  
 					<tr><td>출발지</td><td>${vo.depplacename}</td></tr>
@@ -83,9 +83,16 @@ a {
                 $(":checkbox").removeAttr("disabled");
             });
         });
+        
+     
+       
+	
+        
+       
     </script>
     <br>
 <form action="${contextPath}/res/reserv.do" method="post" style="border:1px solid #ccc">
+<br>
 
 <div class="seat-wrapper" style="text-align: center"> 
     <span>인원수 선택 : </span>
@@ -103,6 +110,8 @@ a {
 
     <br>
     <br>
+    <h2 style="text-align: center">좌석선택</h2><br><br>
+    
     <table border="1" style="width:50%; margin:auto">
     
         <tr>

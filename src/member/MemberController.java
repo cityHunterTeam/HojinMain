@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -134,9 +135,9 @@ public class MemberController extends HttpServlet {
 			String id = (String)session.getAttribute("id");
 			memberDAO.deleteMem(id);
 			session.invalidate();
-			nextPage = "/member/deleteMem.jsp";
-			
-		
+			nextPage = "/member/deleteMem.jsp";			
+		}else if(action.equals("/nomember.do")) {
+			nextPage = "/search/MemberChk.jsp";
 		}else {
 			nextPage = "/mem/index.do";
 		}

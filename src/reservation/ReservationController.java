@@ -81,7 +81,7 @@ public class ReservationController extends HttpServlet {
 			HttpSession session = request.getSession();
 			ReservationVO vo = (ReservationVO)session.getAttribute("vo");
 			vo.setCount(count); vo.setSeat(seat); vo.setReser_id(reser_id);
-			vo.setReser_email(reser_email);
+			vo.setReser_email(reser_email); vo.setAdultcharge(vo.getAdultcharge() * count);
 			ReservationDAO dao = new ReservationDAO();
 			dao.addReserv(vo);
 			nextPage = "/mem/index.do";

@@ -56,7 +56,15 @@
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">
                                 <div class="booking_form">
-                                    <form name = "commentForm" action="${contextPath}/json/" method="post">
+                                	<c:if test="${not empty sessionScope.id}">
+                                	<c:url var="url1" value="/json/">
+                                	</c:url>
+                                	</c:if>
+                                	<c:if test="${empty sessionScope.id}">
+                                	<c:url var="url1" value="/mem/nomember.do">
+                                	</c:url>
+                                	</c:if>
+                                    <form name = "commentForm" action="${url1}" method="post">
                               
                                         <div class="form-row">
 											<div class="input-group mb-3" style="width:25%; height:25%" >
