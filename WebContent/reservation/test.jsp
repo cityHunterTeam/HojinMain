@@ -1,94 +1,72 @@
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 	
-    <title>Document</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <style>
-        .seat {
-            width: 40px;
-            height: 30px;
-        }
-        
-        .clicked {
-            background-color: red;
-            color: white;
-        }
-    </style>
-    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>kakao</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 </head>
-
 <body>
-    <div class="seat-wrapper"></div>
+    <script>
+    $(function(){
+        var IMP = window.IMP; // 생략가능
+        IMP.init('imp93244248'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+        var msg;
+        
+        IMP.request_pay({
+            pg : 'kakaopay',
+            pay_method : 'card',
+            merchant_uid : 'merchant_' + new Date().getTime(),
+            name : 'KH Books 도서 결제',
+            amount : 3,
+            buyer_email : 'ycool37@naver.com',
+            buyer_name : '호진',
+            buyer_tel : '01024847204',
+            buyer_addr : '부',
+            buyer_postcode : '123-456',
+            //m_redirect_url : 'http://www.naver.com'
+        }, function(rsp) {
+            if ( rsp.success ) {
+                //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
+                jQuery.ajax({
+                    url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        imp_uid : rsp.imp_uid
+                        //기타 필요한 데이터가 있으면 추가 전달
+                    }
+                }).done(function(data) {
+                    //[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
+                    if ( everythings_fine ) {
+                        msg = '결제가 완료되었습니다.';
+                        msg += '\n고유ID : ' + rsp.imp_uid;
+                        msg += '\n상점 거래ID : ' + rsp.merchant_uid;
+                        msg += '\결제 금액 : ' + rsp.paid_amount;
+                        msg += '카드 승인번호 : ' + rsp.apply_num;
+                        
+                        alert(msg);
+                    } else {
+                        //[3] 아직 제대로 결제가 되지 않았습니다.
+                        //[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
+                    }
+                });
+                //성공시 이동할 페이지
+               <%--  location.href='<%=request.getContextPath()%>/order/paySuccess?msg='+msg; --%>
+            } else {
+                msg = '결제에 실패하였습니다.';
+                msg += '에러내용 : ' + rsp.error_msg;
+                //실패시 이동할 페이지
+                location.href="<%=request.getContextPath()%>/order/payFail";
+                alert(msg);
+            }
+        });
+        
+    });
+    </script> 
+ 
 </body>
-<script>
-    let test = [];
-    let selectedSeats = new Array();
-    let selectedSeatsMap = [];
-    const seatWrapper = document.querySelector(".seat-wrapper");
-    let clicked = "";
-    let div = "";
-
-    for (let i = 0; i < 4; i++) {
-        div = document.createElement("div");
-        seatWrapper.append(div);
-        for (let j = 0; j < 25; j++) {
-            const input = document.createElement('input');
-            input.type = "button";
-            input.name = "seats"
-            input.classList = "seat";
-            //3중포문을 사용하지 않기위해 
-            mapping(input, i, j);
-            div.append(input);
-            input.addEventListener('click', function(e) {
-                console.log(e.target.value);
-                //중복방지 함수
-                selectedSeats = selectedSeats.filter((element, index) => selectedSeats.indexOf(element) != index);
-
-                //click class가 존재할때(제거해주는 toggle)
-                if (input.classList.contains("clicked")) {
-                    input.classList.remove("clicked");
-                    clicked = document.querySelectorAll(".clicked");
-                    selectedSeats.splice(selectedSeats.indexOf(e.target.value), 1);
-                    clicked.forEach((data) => {
-                        selectedSeats.push(data.value);
-                    });
-                    //click class가 존재하지 않을때 (추가해주는 toggle)
-                } else {
-                    input.classList.add("clicked");
-                    clicked = document.querySelectorAll(".clicked");
-                    clicked.forEach((data) => {
-                        selectedSeats.push(data.value);
-                    })
-                }
-                console.log(selectedSeats);
-            })
-        }
-    }
-
-    function mapping(input, i, j) {
-        if (i === 0) {
-            input.value = "A" + j;
-        } else if (i === 1) {
-            input.value = "B" + j;
-        } else if (i === 2) {
-            input.value = "C" + j;
-        } else if (i === 3) {
-            input.value = "D" + j;
-        } else if (i === 4) {
-            input.value = "E" + j;
-        } else if (i === 5) {
-            input.value = "F" + j;
-        } else if (i === 6) {
-            input.value = "G" + j;
-        }
-    }
-</script>
-
-
- </div><!--오른쪽 /전체 예약정보끝 -->    
-</div>
-</div>
 </html>
