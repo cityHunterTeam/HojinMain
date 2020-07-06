@@ -69,7 +69,8 @@ public class ReservationController extends HttpServlet {
 			MemberVO mvo = mdao.selectAll(id);
 			request.setAttribute("mvo", mvo);
 			nextPage = "/reservation/reserStep1.jsp";
-		}else if(action.equals("/reserv.do")) {
+			
+		}else if(action.equals("/reserv1.do")) {
 			String reser_id = request.getParameter("id");
 			String reser_email = request.getParameter("email");
 			int count = Integer.parseInt(request.getParameter("person"));
@@ -82,15 +83,24 @@ public class ReservationController extends HttpServlet {
 			ReservationVO vo = (ReservationVO)session.getAttribute("vo");
 			vo.setCount(count); vo.setSeat(seat); vo.setReser_id(reser_id);
 			vo.setReser_email(reser_email); vo.setAdultcharge(vo.getAdultcharge() * count);
+			session.setAttribute("vo", vo);
+			request.setAttribute("reser_id", reser_id);
+			request.setAttribute("reser_email", reser_email);
+			nextPage = "/mem/index.do";
+		}else if(action.equals("/reserv2.do")) {
+			
+			nextPage = "/reservation/reserStep3.jsp";
+
+		}else if(action.equals("/reserv3.do")) {
+		
+			HttpSession session = request.getSession();
 			ReservationDAO dao = new ReservationDAO();
+			ReservationVO vo = (ReservationVO)session.getAttribute("vo");
 			dao.addReserv(vo);
+			session.removeAttribute("vo");
 			nextPage = "/mem/index.do";
 		}
-		
-		
-		
-			
-		
+
 		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 		dispatch.forward(request, response);
 	}

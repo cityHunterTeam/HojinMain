@@ -91,7 +91,7 @@ a {
        
     </script>
     <br>
-<form action="${contextPath}/res/reserv.do" method="post" style="border:1px solid #ccc">
+<form action="${contextPath}/res/reserv1.do" method="post" style="border:1px solid #ccc">
 <br>
 
 <div class="seat-wrapper" style="text-align: center"> 

@@ -1,14 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>kakao</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/reset.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+
+<meta charset="UTF-8">
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 </head>
+
+ <c:set var="contextPath"  value="${pageContext.request.contextPath}"/>    
+
+<jsp:include page="/member/header.jsp"/>
+
 <body>
     <script>
     $(function(){
@@ -20,13 +34,11 @@
             pg : 'kakaopay',
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
-            name : 'KH Books 도서 결제',
-            amount : 3,
-            buyer_email : 'ycool37@naver.com',
-            buyer_name : '호진',
-            buyer_tel : '01024847204',
-            buyer_addr : '부',
-            buyer_postcode : '123-456',
+            name : 'KTX 열차 결제',
+            amount : '${vo.adultcharge}',
+            buyer_email : '${vo.reser_email}',
+            buyer_id : '${vo.reser_id}',
+            buyer_seat : '${vo.seat}'
             //m_redirect_url : 'http://www.naver.com'
         }, function(rsp) {
             if ( rsp.success ) {
@@ -55,7 +67,7 @@
                     }
                 });
                 //성공시 이동할 페이지
-               <%--  location.href='<%=request.getContextPath()%>/order/paySuccess?msg='+msg; --%>
+                location.href='${contextPath}/res/reserv3.do';
             } else {
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
@@ -67,6 +79,7 @@
         
     });
     </script> 
+ <jsp:include page="/member/footer.jsp"/>
  
 </body>
 </html>
