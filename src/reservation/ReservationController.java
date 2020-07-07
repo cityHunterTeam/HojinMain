@@ -86,9 +86,11 @@ public class ReservationController extends HttpServlet {
 			session.setAttribute("vo", vo);
 			request.setAttribute("reser_id", reser_id);
 			request.setAttribute("reser_email", reser_email);
-			nextPage = "/mem/index.do";
+			nextPage = "/reservation/reserStep2.jsp";
 		}else if(action.equals("/reserv2.do")) {
-			
+			HttpSession session = request.getSession();
+			ReservationVO vo = (ReservationVO)session.getAttribute("vo");
+			request.setAttribute("vo", vo);
 			nextPage = "/reservation/reserStep3.jsp";
 
 		}else if(action.equals("/reserv3.do")) {

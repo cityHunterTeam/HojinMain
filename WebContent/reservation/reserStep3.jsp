@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <!DOCTYPE html>
@@ -21,7 +22,6 @@
 
  <c:set var="contextPath"  value="${pageContext.request.contextPath}"/>    
 
-<jsp:include page="/member/header.jsp"/>
 
 <body>
     <script>
@@ -67,19 +67,18 @@
                     }
                 });
                 //성공시 이동할 페이지
-                location.href='${contextPath}/res/reserv3.do';
+// 	             location.href='${contextPath}/res/reserv3.do';
             } else {
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
                 //실패시 이동할 페이지
-                location.href="<%=request.getContextPath()%>/order/payFail";
+<%--                 location.href="<%=request.getContextPath()%>/order/payFail"; --%>
                 alert(msg);
             }
         });
         
     });
     </script> 
- <jsp:include page="/member/footer.jsp"/>
  
 </body>
 </html>
