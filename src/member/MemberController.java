@@ -1,6 +1,17 @@
 package member;
 
+
 import java.io.IOException;
+
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,7 +23,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mysql.cj.Session;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
+
 
 @WebServlet("/mem/*")
 public class MemberController extends HttpServlet {
@@ -124,6 +142,8 @@ public class MemberController extends HttpServlet {
 			session.invalidate();
 			nextPage = "/member/deleteMem.jsp";
 			
+		}else if(action.equals("/nomember.do")) {
+			nextPage = "/search/MemberChk.jsp";
 		}else {
 			nextPage = "/mem/index.do";
 		}

@@ -45,12 +45,14 @@
 
    <!--::header part start::-->
 	<jsp:include page="/inc/header.jsp"/>
+
     <!-- Header part end-->
 <!-- 로긴폼 -->
  	<jsp:include page="${center}"></jsp:include>
 
 <!--     footer part start -->
     <jsp:include page="/inc/footer.jsp"></jsp:include>
+
 <!--     footer part end -->
 
     <!-- jquery plugins here-->
