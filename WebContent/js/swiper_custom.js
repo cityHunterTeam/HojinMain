@@ -21,4 +21,3 @@
   });
   galleryTop.controller.control = galleryThumbs;
   galleryThumbs.controller.control = galleryTop;
-  // swiper js code end

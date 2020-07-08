@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
+	<name>wook</name>
+=======
 	<name>team_project</name>
+>>>>>>> e5b7fddc79f4b3e003b1202c23e0a9e3cd6f0554
 	<comment></comment>
 	<projects>
 	</projects>

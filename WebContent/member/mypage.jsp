@@ -44,13 +44,13 @@
 
 
    <!--::header part start::-->
-	<jsp:include page="header.jsp"/>
+	<jsp:include page="/inc/header.jsp"/>
     <!-- Header part end-->
 <!-- 회원수정폼 -->
  	<jsp:include page="${center}"></jsp:include>
 
     <!-- footer part start-->
-    <jsp:include page="footer.jsp"></jsp:include>
+    <jsp:include page="/inc/footer.jsp"></jsp:include>
     <!-- footer part end-->
 
     <!-- jquery plugins here-->
@@ -77,5 +77,6 @@
     <!-- custom js -->
     <script src="js/custom.js"></script>
 </body>
+
 
 </html>

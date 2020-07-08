@@ -5,7 +5,34 @@
 <html lang="en">
 
 <head>
-   
+     <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Martine</title>
+    <link rel="icon" href="../img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="../css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="../css/themify-icons.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="../css/flaticon.css">
+    <!-- fontawesome CSS -->
+    <link rel="stylesheet" href="../fontawesome/css/all.min.css">
+    <!-- magnific CSS -->
+    <link rel="stylesheet" href="../css/magnific-popup.css">
+    <link rel="stylesheet" href="../css/gijgo.min.css">
+    <!-- niceselect CSS -->
+    <link rel="stylesheet" href="../css/nice-select.css">
+    <!-- slick CSS -->
+    <link rel="stylesheet" href="../css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="../css/style.css"> 
+    
+     <link rel="stylesheet" href="../css/join.css">
 </head>
 
 <body>
@@ -16,13 +43,13 @@
 
 
    <!--::header part start::-->
-	<jsp:include page="header.jsp"/>
+	<jsp:include page="/inc/header.jsp"/>
     <!-- Header part end-->
 <!-- 회원가입폼 -->
  	<jsp:include page="${center}"></jsp:include>
 
     <!-- footer part start-->
-    <jsp:include page="footer.jsp"></jsp:include>
+    <jsp:include page="/inc/footer.jsp"></jsp:include>
     <!-- footer part end-->
 
     <!-- jquery plugins here-->

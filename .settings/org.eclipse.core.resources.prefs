@@ -1,5 +1,11 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
+encoding//src/notice/noticeController.java=UTF-8
+encoding//src/notice/noticeDAO.java=UTF-8
+encoding/<project>=UTF-8
+=======
 encoding//WebContent/index.jsp=UTF-8
 encoding//WebContent/member/join.jsp=UTF-8
 encoding//WebContent/reservation/reserStep3.jsp=UTF-8
 encoding//WebContent/reservation/test2.jsp=UTF-8
+>>>>>>> e5b7fddc79f4b3e003b1202c23e0a9e3cd6f0554
